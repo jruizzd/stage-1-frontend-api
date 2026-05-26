@@ -1,42 +1,35 @@
-import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
+import ExamProtocols from "../ExamProtocols/ExamProtocols"; // adjust path if needed
 
-// Temporary placeholders (we’ll replace these with your real components)
-function Home() {
-  return (
-    <div>
-      <h2>CT Exam Organizer</h2>
-      <p>Upload or input exam data and click Auto Assign.</p>
-    </div>
-  );
-}
+export default function App() {
+  // Temporary sample data so the component displays something
+  const protocols = [
+    {
+      id: 1,
+      title: "C-Spine",
+      image: "/images/cspine.png",
+      region: "Unassigned",
+    },
+    {
+      id: 2,
+      title: "T-Spine",
+      image: "/images/tspine.png",
+      region: "Unassigned",
+    },
+    {
+      id: 3,
+      title: "L-Spine",
+      image: "/images/lspine.png",
+      region: "Unassigned",
+    },
+  ];
 
-function About() {
   return (
-    <div>
-      <h2>About</h2>
-      <p>
-        This app demonstrates how CTL spine exams can be automatically organized
-        into Cervical, Thoracic, and Lumbar sections.
-      </p>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <>
+    <div className="app">
       <Header />
 
-      <Routes>
-        {/* Main page */}
-        <Route path="/" element={<Home />} />
-
-        {/* Second route */}
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </>
+      {/* Your Exam Protocols Component */}
+      <ExamProtocols protocols={protocols} />
+    </div>
   );
 }
-
-export default App;
