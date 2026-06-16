@@ -1,1 +1,26 @@
+.protocol__cards {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid 4a4a4a80;
+}
 
+.protocol__info {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
+
+.protocol__image {
+  border-radius: 8px;
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  position: relative;
+}

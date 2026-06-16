@@ -1,25 +1,25 @@
 // src/components/ProtocolCard/ProtocolCard.jsx
 import React from "react";
+import "./ProtocolCard.css";
 
-const ProtocolCard = ({ title, image, region, regions, onRegionChange }) => {
+export default function ProtocolCard({ data }) {
+  // if (!data) return null; // safety check
+
   return (
-    <div className="protocol-card">
-      <img src={image} alt={title} />
+    <div className="protocol__card">
+      <img
+        src={
+          data.image ??
+          "https://mrimaster.com/wp-content/uploads/2024/05/MRI-cervical-spine-sagittal-T2-SPACE-3D-image-1.jpg"
+        }
+        alt={data.name}
+        className="protocol__image"
+      />
 
-      <h3>{title}</h3>
-
-      <select
-        value={region}
-        onChange={(e) => onRegionChange(title, e.target.value)}
-      >
-        {regions.map((r) => (
-          <option key={r} value={r}>
-            {r}
-          </option>
-        ))}
-      </select>
+      <div className="protocol__info">
+        <h4>{data.name}</h4>
+        <p className="region-label">{data.type}</p>
+      </div>
     </div>
   );
-};
-
-export default ProtocolCard;
+}

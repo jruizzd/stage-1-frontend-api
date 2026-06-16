@@ -1,74 +1,29 @@
-// src/components/ExamProtocols.jsx
-import React, { useState } from "react";
+// src/components/ExamProtocols/ExamProtocols.jsx
+import React from "react";
 import ProtocolCard from "../ProtocolCard/ProtocolCard";
+import "./ExamProtocols.css";
 
-function autoAssignLogic(protocol) {
-  const name = protocol.title.toLowerCase();
-
-  if (
-    name.includes("cervical") ||
-    name.includes("c-spine") ||
-    name.includes("c spine") ||
-    /c[1-7]/.test(name)
-  )
-    return "Cervical";
-
-  if (
-    name.includes("thoracic") ||
-    name.includes("t-spine") ||
-    name.includes("t spine") ||
-    /t(1[0-2]|[1-9])/.test(name)
-  )
-    return "Thoracic";
-
-  if (
-    name.includes("lumbar") ||
-    name.includes("l-spine") ||
-    name.includes("l spine") ||
-    /l[1-5]/.test(name)
-  )
-    return "Lumbar";
-
-  return "Unassigned";
-}
-
-const regions = ["Cervical", "Thoracic", "Lumbar", "Unassigned"];
-
-const ExamProtocols = ({ protocols }) => {
-  const [assignedProtocols, setAssignedProtocols] = useState(protocols);
-
-  const handleAutoAssign = () => {
-    const updated = assignedProtocols.map((p) => ({
-      ...p,
-      region: autoAssignLogic(p),
-    }));
-    setAssignedProtocols(updated);
-  };
-
-  const handleRegionChange = (title, region) => {
-    setAssignedProtocols((prev) =>
-      prev.map((p) => (p.title === title ? { ...p, region } : p)),
-    );
-  };
-
+export default function ExamProtocols({ protocols, onAutoAssign }) {
   return (
-    <div>
-      <button onClick={handleAutoAssign}>Auto Assign</button>
+    <div className="exam">
+      <div className="exam__header">
+        <div>
+          <h2 className="exam__title">Exam Protocols</h2>
+          <p className="exam__subtitle">
+            Raw data from openFDA – all series grouped under single region
+          </p>
+        </div>
 
-      <div className="protocol-grid">
-        {assignedProtocols.map((p) => (
-          <ProtocolCard
-            key={p.id}
-            title={p.title}
-            image={p.image}
-            region={p.region}
-            regions={regions}
-            onRegionChange={handleRegionChange}
-          />
+        <button className="auto-assign-btn" onClick={onAutoAssign}>
+          Auto Assign
+        </button>
+      </div>
+
+      <div className="exam__grid">
+        {protocols.map((p) => (
+          <ProtocolCard key={p.id} data={p} />
         ))}
       </div>
     </div>
   );
-};
-
-export default ExamProtocols;
+}

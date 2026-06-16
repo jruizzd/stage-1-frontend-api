@@ -1,35 +1,30 @@
+// src/components/App/App.jsx
+import React, { useState } from "react";
 import Header from "../Header/Header";
-import ExamProtocols from "../ExamProtocols/ExamProtocols"; // adjust path if needed
+import ExamView from "../ExamView/ExamView";
+import ExamProtocols from "../ExamProtocols/ExamProtocols";
+
+import { rawExamData, structuredExamData } from "../../data/examData";
 
 export default function App() {
-  // Temporary sample data so the component displays something
-  const protocols = [
-    {
-      id: 1,
-      title: "C-Spine",
-      image: "/images/cspine.png",
-      region: "Unassigned",
-    },
-    {
-      id: 2,
-      title: "T-Spine",
-      image: "/images/tspine.png",
-      region: "Unassigned",
-    },
-    {
-      id: 3,
-      title: "L-Spine",
-      image: "/images/lspine.png",
-      region: "Unassigned",
-    },
-  ];
+  const [view, setView] = useState("raw"); // "raw" or "structured"
+
+  const handleAutoAssign = () => {
+    setView("structured");
+  };
 
   return (
     <div className="app">
       <Header />
 
-      {/* Your Exam Protocols Component */}
-      <ExamProtocols protocols={protocols} />
+      {view === "raw" && (
+        <ExamProtocols
+          protocols={rawExamData[0].series}
+          onAutoAssign={handleAutoAssign}
+        />
+      )}
+
+      {view === "structured" && <ExamView data={structuredExamData} />}
     </div>
   );
 }
