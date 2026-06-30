@@ -1,4 +1,5 @@
-.ct-header {
+/* BLOCK */
+.header {
   width: 100%;
   background: #f9fafc;
   padding: 24px;
@@ -8,32 +9,34 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Top section */
-.ct-header-top {
+/* ELEMENT: top section */
+.header__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ct-title-block {
+/* ELEMENT: title block */
+.header__title-block {
   display: flex;
   flex-direction: column;
 }
 
-.ct-title {
+.header__title {
   font-size: 24px;
   font-weight: 700;
   color: #4f46e5;
   margin: 0;
 }
 
-.ct-subtitle {
+.header__subtitle {
   font-size: 14px;
   color: #6b7280;
   margin-top: 4px;
 }
 
-.ct-btn-raw {
+/* ELEMENT: raw button */
+.header__btn-raw {
   background: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 6px;
@@ -43,18 +46,19 @@
   cursor: pointer;
 }
 
-.ct-btn-raw:hover {
+.header__btn-raw:hover {
   background: #f3f4f6;
 }
 
-/* Stats cards */
-.ct-header-stats {
+/* ELEMENT: stats container */
+.header__stats {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.ct-stat-card {
+/* ELEMENT: stat card */
+.header__stat-card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -66,7 +70,8 @@
   min-width: 220px;
 }
 
-.ct-icon {
+/* ELEMENT: icon + MODIFIERS */
+.header__icon {
   font-size: 20px;
   height: 36px;
   width: 36px;
@@ -77,50 +82,51 @@
   color: white;
 }
 
-.ct-icon-blue {
+.header__icon--blue {
   background: #3b82f6;
 }
 
-.ct-icon-green {
+.header__icon--green {
   background: #10b981;
 }
 
-.ct-icon-purple {
+.header__icon--purple {
   background: #8b5cf6;
 }
 
-.ct-stat-info {
+/* ELEMENT: stat info */
+.header__stat-info {
   display: flex;
   flex-direction: column;
 }
 
-.ct-stat-label {
+.header__stat-label {
   font-size: 13px;
   color: #6b7280;
 }
 
-.ct-stat-value {
+.header__stat-value {
   font-size: 18px;
   font-weight: 600;
   color: #111827;
 }
 
-/* Alert box */
-.ct-alert {
+/* ELEMENT: alert box */
+.header__alert {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 16px 20px;
 }
 
-.ct-alert-title {
+.header__alert-title {
   font-size: 14px;
   font-weight: 600;
   color: #111827;
   margin-bottom: 4px;
 }
 
-.ct-alert-text {
+.header__alert-text {
   font-size: 13px;
   color: #4b5563;
   margin: 0;

@@ -4,7 +4,8 @@ import Header from "../Header/Header";
 import ExamView from "../ExamView/ExamView";
 import ExamProtocols from "../ExamProtocols/ExamProtocols";
 
-import { rawExamData, structuredExamData } from "../../data/examData";
+import { rawExamData } from "../../data/rawExamData";
+import { structuredExamData } from "../../data/structuredExamData";
 
 export default function App() {
   const [view, setView] = useState("raw"); // "raw" or "structured"
@@ -13,9 +14,13 @@ export default function App() {
     setView("structured");
   };
 
+  const handleShowRaw = () => {
+    setView("raw");
+  };
+
   return (
     <div className="app">
-      <Header />
+      <Header onShowRaw={handleShowRaw} />
 
       {view === "raw" && (
         <ExamProtocols

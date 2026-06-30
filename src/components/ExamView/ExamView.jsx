@@ -4,12 +4,12 @@ import ProtocolCard from "../ProtocolCard/ProtocolCard";
 
 export default function ExamView({ data }) {
   return (
-    <div className="exam-container">
+    <div className="exam__container">
       {data.map((region) => (
-        <div key={region.id} className="region-block">
+        <div key={region.id} className="exam__region">
           <h2>{region.name}</h2>
 
-          <div className="series-grid">
+          <div className="exam__series-grid">
             {region.series.map((s) => (
               <ProtocolCard key={s.id} data={s} />
             ))}
