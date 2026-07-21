@@ -17,6 +17,7 @@
 }
 
 .modal__content {
+  position: relative;
   background: white;
   padding: 24px;
   border-radius: 8px;

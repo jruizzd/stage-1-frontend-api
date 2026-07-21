@@ -1,10 +1,13 @@
-// src/components/RegisterModal/RegisterModal.jsx
-
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import "./RegisterModal.css";
 
-export default function RegisterModal({ isOpen, onClose, onRegister }) {
+export default function RegisterModal({
+  isOpen,
+  onClose,
+  onRegister,
+  onSwitchToLogin,
+}) {
   const defaultValues = {
     name: "",
     email: "",
@@ -19,10 +22,7 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
     e.preventDefault();
     if (!isFormValid) return;
 
-    // Stage‑1: no backend → store user locally
     onRegister(values);
-
-    // Reset form
     setValues(defaultValues);
   };
 
@@ -33,6 +33,7 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isFormValid={isFormValid}
     >
       <label className="modal__label">
         Name*
@@ -70,13 +71,21 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
         />
       </label>
 
-      <button
-        type="submit"
-        className={`modal__submit ${isFormValid ? "modal__submit_active" : ""}`}
-        disabled={!isFormValid}
-      >
-        Sign up
-      </button>
+      {/* ⭐ Added footer section */}
+      <div className="register-footer">
+        <p className="register__switch">
+          Already have an account?{" "}
+          <span
+            className="register__switch-link"
+            onClick={() => {
+              onClose();
+              onSwitchToLogin();
+            }}
+          >
+            Log in
+          </span>
+        </p>
+      </div>
     </ModalWithForm>
   );
 }

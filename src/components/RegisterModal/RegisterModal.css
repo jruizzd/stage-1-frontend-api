@@ -1,0 +1,67 @@
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #2f2f2f;
+}
+
+.modal__input {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.modal__input:focus {
+  border-color: #4a90e2;
+}
+
+.modal__submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #bfbfbf;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+  transition: background-color 0.25s ease;
+}
+
+.modal__submit_active {
+  background-color: #4a90e2;
+  cursor: pointer;
+}
+
+.modal__submit_active:hover {
+  background-color: #3a78c2;
+}
+
+/* Footer spacing if you add switch links later */
+.register-footer {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.register__switch {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.register__switch-link {
+  color: #4a90e2;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register__switch-link:hover {
+  text-decoration: underline;
+}
