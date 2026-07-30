@@ -1,16 +1,118 @@
-# React + Vite
+## CT Protocol Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite application that fetches healthcare data from OpenFDA and transforms raw CTL (Cervical–Thoracic–Lumbar) CT protocol series into a clean, structured exam layout. This project simulates real CT technologist workflow and demonstrates how backend automation can reorganize imaging series before sending exams to downstream vendor systems.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+CT scanners often generate multiple series under a single protocol (e.g., CTL Spine). These series arrive grouped together and require manual cleanup before being sent to PACS or another vendor system.
 
-## React Compiler
+This application replicates that workflow:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Fetch raw healthcare data from OpenFDA
 
-## Expanding the ESLint configuration
+Display CTL exam series in their raw, unorganized state
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Allow the user to click Auto Assign
+
+Backend reorganizes the exam into Cervical, Thoracic, and Lumbar regions
+
+Frontend displays the structured exam with correct reconstruction series
+
+The result is a realistic simulation of how technologists prepare CT exams for radiologists.
+
+## Real‑World Workflow Inspiration
+
+In clinical practice:
+
+The technologist selects a CTL protocol on the CT scanner.
+
+The scanner produces multiple series covering:
+
+Cervical Spine
+
+Thoracic Spine
+
+Lumbar Spine
+
+All series initially appear grouped together under one exam.
+
+Before sending the exam to PACS or another vendor system, the technologist must:
+
+Verify exam naming
+
+Ensure each series is placed under the correct anatomical region
+
+Fix mis‑grouped or mislabeled series
+
+This cleanup is often manual, requiring drag‑and‑drop adjustments.
+
+This application automates that cleanup.
+
+## How It Works
+
+1. Raw CTL Series Display
+   When the app loads, CTL series are shown in their raw format:
+
+Mixed anatomical regions
+
+Reconstructions not grouped correctly
+
+Naming inconsistencies
+
+This mirrors the initial state of a CT exam before technologist cleanup.
+
+2. Auto Assign (Backend Processing)
+   When the user clicks Auto Assign, the backend:
+
+Analyzes each series
+
+Identifies anatomical region (Cervical, Thoracic, Lumbar)
+
+Detects reconstruction types (Axial, Sagittal, Coronal, Bone, STD)
+
+Reorganizes the exam into three structured groups
+
+Ensures each region contains the correct reconstruction series
+
+This simulates how imaging departments automate protocol cleanup.
+
+3. Structured Exam Display (Frontend)
+   The frontend then renders:
+
+Cervical Spine
+
+Scout
+
+Axial
+
+Sagittal
+
+Coronal
+
+Bone
+
+Thoracic Spine
+
+Scout
+
+Axial
+
+Sagittal
+
+Coronal
+
+Bone
+
+Lumbar Spine
+
+Scout
+
+Axial
+
+Sagittal
+
+Coronal
+
+Bone
+
+The UI resembles a PACS‑style protocol viewer.
