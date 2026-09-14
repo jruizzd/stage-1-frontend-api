@@ -1,6 +1,8 @@
 // src/utils/api.js
 
 const apiKey = import.meta.env.VITE_API_KEY;
+console.log("Loaded API KEY:", apiKey);
+
 const fdaBaseUrl = "https://api.fda.gov/drug/label.json";
 
 // ------------------ HELPER ------------------

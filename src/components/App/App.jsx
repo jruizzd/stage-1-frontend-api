@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "../Header/Header";
 import ExamView from "../ExamView/ExamView";
 import ExamProtocols from "../ExamProtocols/ExamProtocols";
+
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Profile from "../Profile/Profile";
+
 import { rawExamData } from "../../data/rawExamData";
 import { structuredExamData } from "../../data/structuredExamData";
 import { getDrugs } from "../../utils/api";
@@ -43,14 +50,30 @@ export default function App() {
         user={user}
       />
 
-      {view === "raw" && (
-        <ExamProtocols
-          protocols={rawExamData[0].series}
-          onAutoAssign={() => setView("structured")}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            view === "raw" ? (
+              <ExamProtocols
+                protocols={rawExamData[0].series}
+                onAutoAssign={() => setView("structured")}
+              />
+            ) : (
+              <ExamView data={structuredExamData} />
+            )
+          }
         />
-      )}
 
-      {view === "structured" && <ExamView data={structuredExamData} />}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute isLoggedIn={!!user}>
+              <Profile user={user} />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
 
       <RegisterModal
         isOpen={isRegisterOpen}
