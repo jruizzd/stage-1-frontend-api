@@ -119,4 +119,5 @@ The UI resembles a PACS‑style protocol viewer.
 
 ## Deployment
 
-The project is deployed at https://github.com/jruizzd/stage-1-frontend-api.git
+The project is deployed at:
+https://jruizzd.github.io/stage-1-frontend-api/
