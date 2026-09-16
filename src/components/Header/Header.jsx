@@ -1,4 +1,8 @@
-export default function Header({ onShowRaw, onOpenRegister }) {
+import { useNavigate } from "react-router-dom";
+
+export default function Header({ onShowRaw, onOpenRegister, user }) {
+  const navigate = useNavigate();
+
   return (
     <header className="header">
       <div className="header__top">
@@ -12,13 +16,22 @@ export default function Header({ onShowRaw, onOpenRegister }) {
             Raw Data
           </button>
 
-          <button className="header__btn-register" onClick={onOpenRegister}>
-            Sign Up
-          </button>
+          {!user && (
+            <button className="header__btn-register" onClick={onOpenRegister}>
+              Sign Up
+            </button>
+          )}
+
+          {user && (
+            <button
+              className="header__btn-profile"
+              onClick={() => navigate("/profile")}
+            >
+              Profile
+            </button>
+          )}
         </div>
       </div>
-
-      {/* your stats + alert remain unchanged */}
     </header>
   );
 }

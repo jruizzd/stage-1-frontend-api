@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./ModalWithForm.css";
 
 export default function ModalWithForm({
@@ -9,9 +10,25 @@ export default function ModalWithForm({
   children,
   isFormValid,
 }) {
+  // --- ESCAPE KEY CLOSE ---
+  useEffect(() => {
+    function handleEsc(e) {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
   return (
-    <div className={`modal ${isOpen ? "modal_open" : ""}`}>
-      <div className="modal__content">
+    // --- OVERLAY CLICK CLOSE ---
+    <div className={`modal ${isOpen ? "modal_open" : ""}`} onClick={onClose}>
+      <div
+        className="modal__content"
+        onClick={(e) => e.stopPropagation()} // prevents closing when clicking inside
+      >
         <button className="modal__close" onClick={onClose}>
           ✖
         </button>
