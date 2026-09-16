@@ -1,0 +1,29 @@
+import { rawExamData } from "./rawExamData";
+import { imageMap } from "./imageMap";
+
+export const structuredExamData = [
+  {
+    id: "cervical",
+    name: "Cervical Spine",
+    region: "cervical",
+    series: rawExamData[0].series
+      .filter((s) => s.id.startsWith("c-"))
+      .map((s) => ({ ...s, image: imageMap[s.id] })),
+  },
+  {
+    id: "thoracic",
+    name: "Thoracic Spine",
+    region: "thoracic",
+    series: rawExamData[0].series
+      .filter((s) => s.id.startsWith("t-"))
+      .map((s) => ({ ...s, image: imageMap[s.id] })),
+  },
+  {
+    id: "lumbar",
+    name: "Lumbar Spine",
+    region: "lumbar",
+    series: rawExamData[0].series
+      .filter((s) => s.id.startsWith("l-"))
+      .map((s) => ({ ...s, image: imageMap[s.id] })),
+  },
+];
