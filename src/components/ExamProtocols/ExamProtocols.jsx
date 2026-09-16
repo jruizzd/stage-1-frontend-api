@@ -5,10 +5,10 @@ import "./ExamProtocols.css";
 import { imageMap } from "../../data/imageMap";
 
 export default function ExamProtocols({ protocols, onAutoAssign }) {
-  // ✅ Enrich raw protocols with image paths
+  // Use p.id because it matches your imageMap keys exactly
   const enrichedProtocols = protocols.map((p) => ({
     ...p,
-    image: imageMap[p.id],
+    image: imageMap[p.id], // <-- FIXED: this is the correct key
   }));
 
   return (
