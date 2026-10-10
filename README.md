@@ -1,4 +1,4 @@
-## CT Protocol Manager
+## Radiology Pacs Manager
 
 A React + Vite application that fetches healthcare data from OpenFDA and transforms raw CTL (Cervical–Thoracic–Lumbar) CT protocol series into a clean, structured exam layout. This project simulates real CT technologist workflow and demonstrates how backend automation can reorganize imaging series before sending exams to downstream vendor systems.
 

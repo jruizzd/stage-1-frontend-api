@@ -7,7 +7,7 @@ export default function Header({ onShowRaw, onOpenRegister, user }) {
     <header className="header">
       <div className="header__top">
         <div className="header__title-block">
-          <h1 className="header__title">CT Exam Protocol Manager</h1>
+          <h1 className="header__title">Radiology PACS Manager</h1>
           <p className="header__subtitle">OpenFDA Healthcare Data Viewer</p>
         </div>
 
