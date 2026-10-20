@@ -18,12 +18,17 @@ export default function RegisterModal({
 
   const isFormValid = values.name && values.email && values.password;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
 
-    onRegister(values);
-    setValues(defaultValues);
+    try {
+      await onRegister(values);
+      setValues(defaultValues);
+    } catch (err) {
+      console.error("Registration failed:", err);
+      alert("Registration failed. Please try again.");
+    }
   };
 
   return (
@@ -71,10 +76,9 @@ export default function RegisterModal({
         />
       </label>
 
-      {/* ⭐ Added footer section */}
       <div className="register-footer">
         <p className="register__switch">
-          Already have an account?{" "}
+          Already have an account{" "}
           <span
             className="register__switch-link"
             onClick={() => {

@@ -2,7 +2,7 @@
 .header {
   width: 100%;
   background: #f9fafc;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -50,6 +50,19 @@
   background: #f3f4f6;
 }
 
+.header__btn-auto {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.header__btn-auto:hover {
+  background: #f3f4f6;
+}
 /* ELEMENT: stats container */
 .header__stats {
   display: flex;
@@ -130,4 +143,10 @@
   font-size: 13px;
   color: #4b5563;
   margin: 0;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* adjust spacing */
 }

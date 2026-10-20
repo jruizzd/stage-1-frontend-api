@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import "./Header.css";
 
-export default function Header({ onShowRaw, onOpenRegister, user }) {
+export default function Header({
+  onShowRaw,
+  onOpenRegister,
+  onAutoAssign,
+  user,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -12,22 +18,23 @@ export default function Header({ onShowRaw, onOpenRegister, user }) {
         </div>
 
         <div className="header__actions">
-          <button className="header__btn-raw" onClick={onShowRaw}>
-            Raw Data
-          </button>
+          {/* Buttons only AFTER login */}
+          {user && (
+            <>
+              <button className="header__btn-raw" onClick={onShowRaw}>
+                Raw Data
+              </button>
 
+              <button className="header__btn-auto" onClick={onAutoAssign}>
+                Auto Assign
+              </button>
+            </>
+          )}
+
+          {/* Sign Up only BEFORE login */}
           {!user && (
             <button className="header__btn-register" onClick={onOpenRegister}>
               Sign Up
-            </button>
-          )}
-
-          {user && (
-            <button
-              className="header__btn-profile"
-              onClick={() => navigate("/profile")}
-            >
-              Profile
             </button>
           )}
         </div>

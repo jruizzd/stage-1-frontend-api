@@ -4,11 +4,11 @@ import ProtocolCard from "../ProtocolCard/ProtocolCard";
 import "./ExamProtocols.css";
 import { imageMap } from "../../data/imageMap";
 
-export default function ExamProtocols({ protocols, onAutoAssign }) {
-  // Use p.id because it matches your imageMap keys exactly
+export default function ExamProtocols({ protocols }) {
+  // Enrich protocols with image paths
   const enrichedProtocols = protocols.map((p) => ({
     ...p,
-    image: imageMap[p.id], // <-- FIXED: this is the correct key
+    image: imageMap[p.id],
   }));
 
   return (
@@ -20,13 +20,6 @@ export default function ExamProtocols({ protocols, onAutoAssign }) {
             Raw data from openFDA – all series grouped under single region
           </p>
         </div>
-
-        <button
-          className="exam-protocols__auto-assign-btn"
-          onClick={onAutoAssign}
-        >
-          Auto Assign
-        </button>
       </div>
 
       <div className="exam-protocols__grid">
