@@ -5,6 +5,7 @@ export default function Header({
   onShowRaw,
   onOpenRegister,
   onAutoAssign,
+  autoAssigned, // ⭐ NEW
   user,
 }) {
   const navigate = useNavigate();
@@ -25,9 +26,12 @@ export default function Header({
                 Raw Data
               </button>
 
-              <button className="header__btn-auto" onClick={onAutoAssign}>
-                Auto Assign
-              </button>
+              {/* ⭐ Auto Assign hides after clicking */}
+              {!autoAssigned && (
+                <button className="header__btn-auto" onClick={onAutoAssign}>
+                  Auto Assign
+                </button>
+              )}
             </>
           )}
 

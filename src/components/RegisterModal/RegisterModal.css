@@ -65,3 +65,14 @@
 .register__switch-link:hover {
   text-decoration: underline;
 }
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.modal__input_error {
+  border-color: red;
+}

@@ -26,6 +26,9 @@ export default function App() {
 
   const [user, setUser] = useState(null);
 
+  // ⭐ NEW: controls Auto Assign visibility in Header
+  const [autoAssigned, setAutoAssigned] = useState(false);
+
   // Fetch FDA data
   useEffect(() => {
     getDrugs("openfda.generic_name:ibuprofen")
@@ -50,16 +53,21 @@ export default function App() {
     navigate("/");
   };
 
-  // ⭐ Auto Assign now lives in Header
+  // ⭐ Auto Assign logic
   const handleAutoAssign = () => {
     setView("structured");
+    setAutoAssigned(true); // hides Auto Assign in header
   };
 
   return (
     <div className="app">
       <Header
-        onShowRaw={() => setView("raw")}
-        onAutoAssign={handleAutoAssign} // ⭐ moved here
+        onShowRaw={() => {
+          setView("raw");
+          setAutoAssigned(false); // ⭐ show Auto Assign again
+        }}
+        onAutoAssign={handleAutoAssign}
+        autoAssigned={autoAssigned} // ⭐ pass flag to Header
         onOpenRegister={() => setIsRegisterOpen(true)}
         onOpenLogin={() => setIsLoginOpen(true)}
         user={user}
@@ -84,9 +92,7 @@ export default function App() {
           element={
             user ? (
               view === "raw" ? (
-                <ExamProtocols
-                  protocols={rawExamData[0].series} // ⭐ no more onAutoAssign
-                />
+                <ExamProtocols protocols={rawExamData[0].series} />
               ) : (
                 <ExamView data={structuredExamData} />
               )

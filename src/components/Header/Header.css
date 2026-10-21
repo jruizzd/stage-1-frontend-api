@@ -63,6 +63,7 @@
 .header__btn-auto:hover {
   background: #f3f4f6;
 }
+
 /* ELEMENT: stats container */
 .header__stats {
   display: flex;
@@ -148,5 +149,41 @@
 .header__actions {
   display: flex;
   align-items: center;
-  gap: 12px; /* adjust spacing */
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .header__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header__actions {
+    flex-direction: column; /* stack buttons */
+    width: 100%;
+    gap: 10px;
+  }
+
+  .header__btn-raw,
+  .header__btn-auto,
+  .header__btn-register {
+    width: 100%; /* full width buttons */
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .header__title {
+    font-size: 20px;
+  }
+
+  .header__subtitle {
+    font-size: 13px;
+  }
 }
